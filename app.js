@@ -3,13 +3,19 @@ const http = require('http');
 const hostname = '127.0.0.1';
 const port = 3000;
 
+
+const monitoringData = require('./monitoringData.json')
+
+
+
+
 const server = http.createServer((req, res) => {
   let url = req.url;
   res.statusCode = 200;
   if (url === '/monitoring') {
     res.setHeader('Content-Type', 'application/json');
     res.end(
-      JSON.stringify({ number: 1 , name: 'John'})
+      JSON.stringify(monitoringData)
     );
   } else {
     res.setHeader('Content-Type', 'text/plain');
